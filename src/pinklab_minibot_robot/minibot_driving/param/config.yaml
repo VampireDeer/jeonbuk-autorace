@@ -1,0 +1,10 @@
+lane_detect:
+  ros__parameters:
+    rgb_topic: '/image_raw/compressed'
+
+slam_control3:
+  ros__parameters:
+    lane_topic: "/lane_state"
+    slam_topic: "/slam_state"
+    aruco_topic: "/detect_aruco_num"
+    object_topic: "/detect_object"

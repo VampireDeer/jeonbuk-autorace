@@ -1,0 +1,15 @@
+object_detect:
+  ros__parameters:
+    rgb_topic: "/image_raw/compressed"
+    conf: 0.6
+    device: "cpu"
+
+aruco_detect:
+  ros__parameters:
+    rgb_topic: "/image_raw/compressed"
+
+all_detect:
+  ros__parameters:
+    rgb_topic: "/image_raw/compressed"
+    conf: 0.6
+    device: "cpu"
