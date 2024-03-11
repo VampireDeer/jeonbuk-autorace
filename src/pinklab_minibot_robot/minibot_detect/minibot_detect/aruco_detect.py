@@ -120,6 +120,10 @@ class ArucoDetect(Node):
                     msg = Int32MultiArray()
                     msg.data = [int(markerID)]
                     self.aruco_publisher.publish(msg)
+            else:
+                msg = Int32MultiArray()
+                msg.data = [51]
+                self.aruco_publisher.publish(msg)
 
             # 마커 정보 화면에 그리기
             detected_markers = aruco_display(self, corners, ids, rejected, frame)

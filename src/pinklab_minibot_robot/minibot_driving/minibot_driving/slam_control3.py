@@ -55,8 +55,6 @@ class Control(Node):
         else:
             self.TwistMsg = geometry_msgs.msg.Twist
 
-        # self.pub = self.create_publisher(self.TwistMsg, '/base_controller/cmd_vel_unstamped', 10)
-
         self.speed = 0.1
         self.turn = 0.5
         self.x = 0.0
@@ -66,6 +64,10 @@ class Control(Node):
         self.status = 0.0
         self.count_intersection = 0
         self.twist_msg = self.TwistMsg()
+
+        self.aruco_info_data = 51
+        self.object_info_data = 0
+
 
         if self.stamped:
             self.twist = self.twist_msg.twist
@@ -92,19 +94,19 @@ class Control(Node):
             10
         )
 
-        # self.aruco_subscriber = self.create_subscription(
-        #     Int32MultiArray,
-        #     self.aruco_topic,
-        #     self.aruco_info_callback(),
-        #     10
-        # )
+        self.aruco_subscriber = self.create_subscription(
+            Int32MultiArray,
+            self.aruco_topic,
+            self.aruco_info_callback,
+            10
+        )
 
-        # self.detect_subscriber = self.create_subscription(
-        #     Int32MultiArray,
-        #     self.object_topic,
-        #     self.object_info_callback(),
-        #     10
-        # )
+        self.detect_subscriber = self.create_subscription(
+            Int32MultiArray,
+            self.object_topic,
+            self.object_info_callback,
+            10
+        )
         
         self.Twist_publisher = self.create_publisher(
             self.TwistMsg,
@@ -127,15 +129,15 @@ class Control(Node):
         self.get_logger().info(f"Recive PoseStamped message: {msg}")
 
 
-    # def aruco_info_callback(self, msg):
-    #     if msg.data:
-    #         self.aruco_info_data = msg.data[0]
-    #         self.auto_drive()
-          
-    # def object_info_callback(self, msg):
-    #     if msg.data:
-    #         self.object_info_data = msg.data[0]
-    #         self.auto_drive()
+    def aruco_info_callback(self, msg):
+        if msg.data:
+            self.aruco_info_data = msg.data[0]
+            self.auto_drive()
+
+    def object_info_callback(self, msg):
+        if msg.data:
+            self.object_info_data = msg.data[0]
+            self.auto_drive()
 
 
     def go_front(self):
@@ -248,80 +250,164 @@ class Control(Node):
 
 
     def auto_drive(self):
-        print("Lane Detet Mode")
-        if self.slam_state_data == 0:
-        # LANE Detect Mode
-            # Go_Front
-            if self.lane_state_data == 1:
-                self.go_front()
-                print("GO_Front")
-
-            # Go_Right
-            elif self.lane_state_data == 2:
-                self.go_right()
-                print("Go_Right")
-
-            # Go_Left
-            elif self.lane_state_data == 3:
-                self.go_left()
-                print("Go_Left")
-
-            else:
-                pass
+        if (self.aruco_info_data == 1) or (self.object_info_data == 1):
             
+            # self.x = 0.0
+            # self.y = 0.0
+            # self.z = 0.0
+            # self.th = 0.0
+            print("detect aruco or object")
+            time.sleep(3)
+
+            print("Lane Detet Mode")
+            if self.slam_state_data == 0:
+            # LANE Detect Mode
+                # Go_Front
+                if self.lane_state_data == 1:
+                    self.go_front()
+                    print("GO_Front")
+
+                # Go_Right
+                elif self.lane_state_data == 2:
+                    self.go_right()
+                    print("Go_Right")
+
+                # Go_Left
+                elif self.lane_state_data == 3:
+                    self.go_left()
+                    print("Go_Left")
+
+                else:
+                    pass
+                
+                if self.stamped:
+                    self.twist_msg.header.stamp = self.get_clock().now().to_msg()
+                self.speed = 0.1
+                self.twist.linear.x = self.x * self.speed *(2/3)
+                self.twist.linear.y = self.y * self.speed *(2/3)
+                self.twist.linear.z = self.z * self.speed *(2/3)
+                self.twist.angular.x = 0.0
+                self.twist.angular.y = 0.0
+                self.twist.angular.z = self.th * self.turn
+                self.Twist_publisher.publish(self.twist_msg)
+                # self.pub.publish(self.twist_msg)
+                print("Lane Detet Mode acting")
+            
+
+            # SLAM Mode
+            elif self.slam_state_data == 1:
+                print("Slam Mode pass")
+                # pass
+                
+                self.x = 0.0
+                self.y = 0.0
+                self.z = 0.0
+                self.th = 0.0
+
+                if self.count_intersection == 0:
+                    self.use_navi(self.first_intersection)
+                    self.count_intersection = 1
+                elif self.count_intersection == 1:
+                    self.use_navi(self.second_intersection)
+                    self.count_intersection = 2
+                elif self.count_intersection == 2:
+                    self.use_navi(self.third_intersection)
+                    self.count_intersection = 3
+                elif self.count_intersection == 3:
+                    self.use_navi(self.last_intersection)
+                    self.count_intersection = 4
+                else:
+                    print("5 intersection is nothing")    
+                    pass
+            else:
+                print("Not Lane detect, Slam")
+
             if self.stamped:
                 self.twist_msg.header.stamp = self.get_clock().now().to_msg()
-            self.speed = 0.1
-            self.twist.linear.x = self.x * self.speed *(2/3)
-            self.twist.linear.y = self.y * self.speed *(2/3)
-            self.twist.linear.z = self.z * self.speed *(2/3)
+
+            self.twist.linear.x = self.x * self.speed
+            self.twist.linear.y = self.y * self.speed
+            self.twist.linear.z = self.z * self.speed
             self.twist.angular.x = 0.0
             self.twist.angular.y = 0.0
             self.twist.angular.z = self.th * self.turn
             self.Twist_publisher.publish(self.twist_msg)
-            # self.pub.publish(self.twist_msg)
-            print("Lane Detet Mode acting")
-        
 
-        # SLAM Mode
-        elif self.slam_state_data == 1:
-            print("Slam Mode pass")
-            # pass
-            
-            self.x = 0.0
-            self.y = 0.0
-            self.z = 0.0
-            self.th = 0.0
 
-            if self.count_intersection == 0:
-                self.use_navi(self.first_intersection)
-                self.count_intersection = 1
-            elif self.count_intersection == 1:
-                self.use_navi(self.second_intersection)
-                self.count_intersection = 2
-            elif self.count_intersection == 2:
-                self.use_navi(self.third_intersection)
-                self.count_intersection = 3
-            elif self.count_intersection == 3:
-                self.use_navi(self.last_intersection)
-                self.count_intersection = 4
-            else:
-                print("5 intersection is nothing")    
-                pass
+
         else:
-            print("Not Lane detect, Slam")
+            print("Lane Detet Mode")
+            if self.slam_state_data == 0:
+            # LANE Detect Mode
+                # Go_Front
+                if self.lane_state_data == 1:
+                    self.go_front()
+                    print("GO_Front")
 
-        if self.stamped:
-            self.twist_msg.header.stamp = self.get_clock().now().to_msg()
+                # Go_Right
+                elif self.lane_state_data == 2:
+                    self.go_right()
+                    print("Go_Right")
 
-        self.twist.linear.x = self.x * self.speed
-        self.twist.linear.y = self.y * self.speed
-        self.twist.linear.z = self.z * self.speed
-        self.twist.angular.x = 0.0
-        self.twist.angular.y = 0.0
-        self.twist.angular.z = self.th * self.turn
-        self.Twist_publisher.publish(self.twist_msg)
-        # self.pub.publish(self.twist_msg)
+                # Go_Left
+                elif self.lane_state_data == 3:
+                    self.go_left()
+                    print("Go_Left")
+
+                else:
+                    pass
+                
+                if self.stamped:
+                    self.twist_msg.header.stamp = self.get_clock().now().to_msg()
+                self.speed = 0.1
+                self.twist.linear.x = self.x * self.speed *(2/3)
+                self.twist.linear.y = self.y * self.speed *(2/3)
+                self.twist.linear.z = self.z * self.speed *(2/3)
+                self.twist.angular.x = 0.0
+                self.twist.angular.y = 0.0
+                self.twist.angular.z = self.th * self.turn
+                self.Twist_publisher.publish(self.twist_msg)
+                print("Lane Detet Mode acting")
+            
+
+            # SLAM Mode
+            elif self.slam_state_data == 1:
+                print("Slam Mode pass")
+                # pass
+                
+                self.x = 0.0
+                self.y = 0.0
+                self.z = 0.0
+                self.th = 0.0
+
+                if self.count_intersection == 0:
+                    self.use_navi(self.first_intersection)
+                    self.count_intersection = 1
+                elif self.count_intersection == 1:
+                    self.use_navi(self.second_intersection)
+                    self.count_intersection = 2
+                elif self.count_intersection == 2:
+                    self.use_navi(self.third_intersection)
+                    self.count_intersection = 3
+                elif self.count_intersection == 3:
+                    self.use_navi(self.last_intersection)
+                    self.count_intersection = 4
+                else:
+                    print("5 intersection is nothing")    
+                    pass
+            else:
+                print("Not Lane detect, Slam")
+
+            if self.stamped:
+                self.twist_msg.header.stamp = self.get_clock().now().to_msg()
+
+            self.twist.linear.x = self.x * self.speed
+            self.twist.linear.y = self.y * self.speed
+            self.twist.linear.z = self.z * self.speed
+            self.twist.angular.x = 0.0
+            self.twist.angular.y = 0.0
+            self.twist.angular.z = self.th * self.turn
+            self.Twist_publisher.publish(self.twist_msg)
 
 
 def main(args=None):
