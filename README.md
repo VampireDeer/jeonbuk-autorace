@@ -2,8 +2,8 @@
 
 ## 1. 프로젝트 요약
 ### 1-1. 설명
-전북대학교 자율주행 SW 교육 및 경진대회 
-자율 이동 로봇(AMR, Autonomous Mobile Robots)으로 주행 가이드 코드
+- 전북대학교 자율주행 SW 교육 및 경진대회 
+- 자율 이동 로봇(AMR, Autonomous Mobile Robots)으로 주행 가이드 코드
 
 ### 1-2. 개발환경
 - Ubuntu 22.04 Desktop
