@@ -22,7 +22,8 @@
 
     ros2 run v4l2_camera v4l2_camera_node --ros-args -p image_size:="[400,256]"
 
-3 로봇 네비게이션 구동(map 이름에 따라 맨 뒤 yaml 파일이 바뀔 수 있다)
+3 로봇 네비게이션 구동 
+- map 이름에 따라 맨 뒤 yaml 파일이 바뀔 수 있다
 
     ros2 launch minibot_navigation2 bringup_launch.py map:=`ros2 pkg prefix minibot_navigation2`/share/minibot_navigation2/maps/map_final.yaml
 
@@ -31,7 +32,8 @@
 ---
 ### 2-2. rviz2 실행하기
 
-1 SSH 접속이 아닌 메인 컴퓨터에서 rviz2 실행하기 (src 파일이 있는 곳에서 ros2 humble 실행, source ./install/localsetup.bash 후 실행 )
+1 SSH 접속이 아닌 메인 컴퓨터에서 rviz2 실행하기 
+- src 파일이 있는 곳에서 ros2 humble 실행, source ./install/localsetup.bash 후 실행
   
     rviz2 -d `ros2 pkg prefix minibot_navigation2`/share/minibot_navigation2/rviz/nav2_view.rviz 
 
@@ -40,7 +42,8 @@
 ---
 ### 2-3. Detect, Control Package launch 파일 구동
 
-- SSH 접속이 아닌 메인 컴퓨터에서 터미널을 열어서 실행( ros2 humble 실행, source ./install/localsetup.bash 후 실행 )
+- SSH 접속이 아닌 메인 컴퓨터에서 터미널을 열어서 실행
+- ros2 humble 실행, source ./install/localsetup.bash 후 실행
 
 1 ArUCo Marker Detect, Object Detect 
 
