@@ -11,30 +11,28 @@
 ### 2-1. 로봇 실행하기
 - 터미널 3개에서 순서데로 각각 실행
 
-1
+1 로봇 구동
 
     ros2 launch minibot_bringup bringup_robot.launch.py
 
-2
+2 Pi Camera On
 
     ros2 run v4l2_camera v4l2_camera_node --ros-args -p image_size:="[400,256]"
 
-3
+3 로봇 네비게이션 구동(map 이름에 따라 맨 뒤 yaml 파일이 바뀔 수 있다)
 
-    ros2 launch minibot_navigation2 bringup_launch.py map:=`ros2 pkg prefix minibot_navigation2`/share/minibot_navigation2/maps/map.yaml
+    ros2 launch minibot_navigation2 bringup_launch.py map:=`ros2 pkg prefix minibot_navigation2`/share/minibot_navigation2/maps/map_final.yaml
 
 ![gazebo1](https://github.com/VampireDeer/minibot/assets/132260442/5f07e61f-a5c7-42b9-b615-a42cd0974593)
 
 ---
-### 2-2. 가제보와 rviz2에 minibot과 map 띄우기
+### 2-2. rviz2 실행하기
 
-gazebo -> minibot and map
+1 rviz2 실행하기 (src 파일이 있는 곳에서 ros2 humble 실행, source ./install/localsetup.bash 후 실행 )
   
-    ros2 launch my_robot_description launch_sim.launch.py 
+    rviz2 -d `ros2 pkg prefix minibot_navigation2`/share/minibot_navigation2/rviz/nav2_view.rviz 
 
-rviz2 
 
-    rviz2
 
 - rviz2 Displays 설정\
 Fixed Frame -> base_link\
