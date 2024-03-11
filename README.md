@@ -32,7 +32,7 @@
   
     rviz2 -d `ros2 pkg prefix minibot_navigation2`/share/minibot_navigation2/rviz/nav2_view.rviz 
 
-![gazebo_map](https://github.com/VampireDeer/minibot/assets/132260442/412266f3-cea2-4ede-88c9-182a27f835e0)
+![image](https://github.com/VampireDeer/jeonbuk-autorace/assets/132260442/8689ea7e-6653-47be-adc7-1abc01619154)
 
 ---
 ### 2-3. Detect, Control Package launch 파일 구동
@@ -43,9 +43,11 @@
 
     ros2 launch minibot_detect detect_all.launch.py
 
+![image (1)](https://github.com/VampireDeer/jeonbuk-autorace/assets/132260442/acc227c0-bf41-4a0c-a9ca-be6b41e9547c)
+
 2 Lane Detect, Control ans SLAM
 
     ros2 launch minibot_driving run.launch.py
 
-
+![image (2)](https://github.com/VampireDeer/jeonbuk-autorace/assets/132260442/41d686ed-cad9-4727-8b5c-982e42dd832a)
 
