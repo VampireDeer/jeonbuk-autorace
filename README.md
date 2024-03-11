@@ -3,9 +3,15 @@
 ## 1. 프로젝트 요약
 ### 1-1. 설명
 자율 이동 로봇(AMR, Autonomous Mobile Robots)으로 주행 가이드 코드
+
 ### 1-2. 개발환경
 - Ubuntu 22.04 Desktop
 - ROS2 Humble
+- MiniBot(https://github.com/PinkWink/pinklab_minibot_robot.git)
+
+![IMG_5497 (1)](https://github.com/VampireDeer/jeonbuk-autorace/assets/132260442/e3f2d81e-0050-4123-b0cd-d2ffd4943d88)
+
+
 ## 2. 프로젝트 
 ---
 ### 2-1. 로봇 실행하기
