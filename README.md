@@ -1,28 +1,27 @@
 # jeonbuk-autorace
 
-# Mobile Robots Maneuver
 ## 1. 프로젝트 요약
 ### 1-1. 설명
-자율 이동 로봇(AMR, Autonomous Mobile Robots)의 자율 이동을 위한 ROS2 Gazebo와 Rviz2를 사용해보기
+자율 이동 로봇(AMR, Autonomous Mobile Robots)으로 주행 가이드 코드
 ### 1-2. 개발환경
 - Ubuntu 22.04 Desktop
 - ROS2 Humble
 ## 2. 프로젝트 
 ---
-### 2-1. 가제보만 실행하기
+### 2-1. 로봇 실행하기
 - 터미널 3개에서 순서데로 각각 실행
 
 1
 
-    ros2 launch my_robot_description upload.launch.py use_sim_time:=true
+    ros2 launch minibot_bringup bringup_robot.launch.py
 
 2
 
-    ros2 launch gazebo_ros gazebo.launch.py
+    ros2 run v4l2_camera v4l2_camera_node --ros-args -p image_size:="[400,256]"
 
 3
 
-    ros2 run gazebo_ros spawn_entity.py -topic robot_description -entity my_robot
+    ros2 launch minibot_navigation2 bringup_launch.py map:=`ros2 pkg prefix minibot_navigation2`/share/minibot_navigation2/maps/map.yaml
 
 ![gazebo1](https://github.com/VampireDeer/minibot/assets/132260442/5f07e61f-a5c7-42b9-b615-a42cd0974593)
 
