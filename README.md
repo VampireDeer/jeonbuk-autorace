@@ -9,7 +9,7 @@
 ## 2. 프로젝트 
 ---
 ### 2-1. 로봇 실행하기
-- 터미널 3개에서 순서데로 각각 실행
+- SSH로 로봇에 부착 되어있는 Raspberry Pi에 접속 후 각각 접속한 터미널 3개에서 순서데로 각각 실행
 
 1 로봇 구동
 
@@ -28,56 +28,24 @@
 ---
 ### 2-2. rviz2 실행하기
 
-1 rviz2 실행하기 (src 파일이 있는 곳에서 ros2 humble 실행, source ./install/localsetup.bash 후 실행 )
+1 SSH 접속이 아닌 메인 컴퓨터에서 rviz2 실행하기 (src 파일이 있는 곳에서 ros2 humble 실행, source ./install/localsetup.bash 후 실행 )
   
     rviz2 -d `ros2 pkg prefix minibot_navigation2`/share/minibot_navigation2/rviz/nav2_view.rviz 
-
-
-
-- rviz2 Displays 설정\
-Fixed Frame -> base_link\
-RobotModel\
-TF\
-LaserScan\
-Map\
-Camera
 
 ![gazebo_map](https://github.com/VampireDeer/minibot/assets/132260442/412266f3-cea2-4ede-88c9-182a27f835e0)
 
 ---
-### 2-3. Gazebo 와 rviz2로 map building하기
+### 2-3. Detect, Control Package launch 파일 구동
 
-2-2를 실행한 후
+- SSH 접속이 아닌 메인 컴퓨터에서 터미널을 열어서 실행( ros2 humble 실행, source ./install/localsetup.bash 후 실행 )
 
-map building
+1 ArUCo Marker Detect, Object Detect 
 
-    ros2 launch my_robot_description map_building.launch.py
+    ros2 launch minibot_detect detect_all.launch.py
 
-teleopkeyboard
+2 Lane Detect, Control ans SLAM
 
-    ros2 run teleop_twist_keyboard teleop_twist_keyboard
+    ros2 launch minibot_driving run.launch.py
 
-teleop keyboard로 조종하여 map building 후 map 저장
-
-    ros2 run nav2_map_server map_saver_cli -f map_name
-
-![map_building](https://github.com/VampireDeer/minibot/assets/132260442/d243875f-d9ce-4a16-8e49-b1c69313000f)
-
----
-### 2-4. Ros2 SLAM
-
-gazebo 
-
-    ros2 launch my_robot_description launch_sim.launch.py
-
-navigation2
-
-    ros2 launch my_robot_description bringup.launch.py use_sim_time:=true map:=./map_custom.yaml
-
-launch
-
-    ros2 launch my_robot_description display.launch.py
-
-![slam](https://github.com/VampireDeer/minibot/assets/132260442/38a4fbc0-17dd-4756-b541-59aefa7c8e16)
 
 
