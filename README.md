@@ -23,7 +23,7 @@
 
     ros2 launch minibot_navigation2 bringup_launch.py map:=`ros2 pkg prefix minibot_navigation2`/share/minibot_navigation2/maps/map_final.yaml
 
-![gazebo1](https://github.com/VampireDeer/minibot/assets/132260442/5f07e61f-a5c7-42b9-b615-a42cd0974593)
+![image](https://github.com/VampireDeer/jeonbuk-autorace/assets/132260442/8689ea7e-6653-47be-adc7-1abc01619154)
 
 ---
 ### 2-2. rviz2 실행하기
