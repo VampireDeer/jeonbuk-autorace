@@ -8,7 +8,7 @@
 ### 1-2. 개발환경
 - Ubuntu 22.04 Desktop
 - ROS2 Humble
-- MiniBot(https://github.com/PinkWink/pinklab_minibot_robot.git)
+- MiniBot(https://github.com/PinkWink/pinklab_minibot_robot.git)(사진은 맨 아래)
 
 ## 2. 프로젝트 
 ---
@@ -67,3 +67,6 @@
 
 <img width="718" alt="스크린샷 2024-03-12 오전 5 57 36" src="https://github.com/VampireDeer/jeonbuk-autorace/assets/132260442/4d0e2e76-ace1-4388-919b-b755448e7f31">
 
+# MiniBot 
+
+![IMG_5497 (1)](https://github.com/VampireDeer/jeonbuk-autorace/assets/132260442/e3f2d81e-0050-4123-b0cd-d2ffd4943d88)
