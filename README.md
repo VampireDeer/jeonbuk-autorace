@@ -52,6 +52,11 @@
 ![image (2)](https://github.com/VampireDeer/jeonbuk-autorace/assets/132260442/41d686ed-cad9-4727-8b5c-982e42dd832a)
 
 
+# 대회 포스터
+
+<img width="813" alt="공고  2024 자율주행 SW 교육 및 경진대회" src="https://github.com/VampireDeer/jeonbuk-autorace/assets/132260442/070515f4-b086-472c-98da-3f7df5dd3a8b">
+
+# 대회 맵
 
 <img width="718" alt="스크린샷 2024-03-12 오전 5 57 36" src="https://github.com/VampireDeer/jeonbuk-autorace/assets/132260442/4d0e2e76-ace1-4388-919b-b755448e7f31">
 
