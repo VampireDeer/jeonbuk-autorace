@@ -9,13 +9,14 @@
 - 전북대학교 자율주행 SW 교육 및 경진대회 
 - 자율 이동 로봇(AMR, Autonomous Mobile Robots)으로 주행 가이드 코드
 
+---
 ### 1-2. 개발환경
 - Ubuntu 22.04 Desktop
 - ROS2 Humble
 - MiniBot(https://github.com/PinkWink/pinklab_minibot_robot.git)(사진은 맨 아래)
 
-## 2. 프로젝트 
 ---
+## 2. 프로젝트 
 ### 2-1. 로봇 실행하기
 - SSH로 로봇에 부착 되어있는 Raspberry Pi에 접속 후 각각 접속한 터미널 3개에서 순서데로 각각 실행
 
@@ -62,7 +63,7 @@
 
 ![image (2)](https://github.com/VampireDeer/jeonbuk-autorace/assets/132260442/41d686ed-cad9-4727-8b5c-982e42dd832a)
 
-
+---
 # 대회
 ## 대회 포스터
 
@@ -73,6 +74,7 @@
 
 <img width="813" alt="공고  2024 자율주행 SW 교육 및 경진대회" src="https://github.com/VampireDeer/jeonbuk-autorace/assets/132260442/070515f4-b086-472c-98da-3f7df5dd3a8b">
 
+---
 ## 대회 맵
 
 <img width="718" alt="스크린샷 2024-03-12 오전 5 57 36" src="https://github.com/VampireDeer/jeonbuk-autorace/assets/132260442/4d0e2e76-ace1-4388-919b-b755448e7f31">
@@ -80,3 +82,6 @@
 # MiniBot 
 - PinkLAB에서 제작
 ![IMG_5497 (1)](https://github.com/VampireDeer/jeonbuk-autorace/assets/132260442/e3f2d81e-0050-4123-b0cd-d2ffd4943d88)
+
+---
+
