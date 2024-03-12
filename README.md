@@ -2,6 +2,9 @@
 
 ## 1. 프로젝트 요약
 ### 1-1. 설명
+- PinkLAB 소속 인턴 활동
+1. 자율주행로봇 소프트웨어 개발
+2. 자율주행로봇 교육 콘텐츠 개발
 - 전북대학교 자율주행 SW 교육 및 경진대회 
 - 자율 이동 로봇(AMR, Autonomous Mobile Robots)으로 주행 가이드 코드
 
@@ -60,6 +63,9 @@
 
 
 # 대회 포스터
+- PinkLAB 소속 인턴 활동
+1. 전북대학교 RIS미래수송기기사업단에서 요청한 자율주행로봇 교육 수행 조교
+2. 전북대학교 RIS미래수송기기사업단에서 요청한 자율주행 경진대회 진행 위원
 
 <img width="813" alt="공고  2024 자율주행 SW 교육 및 경진대회" src="https://github.com/VampireDeer/jeonbuk-autorace/assets/132260442/070515f4-b086-472c-98da-3f7df5dd3a8b">
 
@@ -68,5 +74,5 @@
 <img width="718" alt="스크린샷 2024-03-12 오전 5 57 36" src="https://github.com/VampireDeer/jeonbuk-autorace/assets/132260442/4d0e2e76-ace1-4388-919b-b755448e7f31">
 
 # MiniBot 
-
+- PinkLAB에서 제작
 ![IMG_5497 (1)](https://github.com/VampireDeer/jeonbuk-autorace/assets/132260442/e3f2d81e-0050-4123-b0cd-d2ffd4943d88)
