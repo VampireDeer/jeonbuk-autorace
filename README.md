@@ -13,7 +13,7 @@
 ### 1-2. 개발환경
 - Ubuntu 22.04 Desktop
 - ROS2 Humble
-- MiniBot(https://github.com/PinkWink/pinklab_minibot_robot.git)(사진은 맨 아래)
+- MiniBot(https://github.com/PinkWink/pinklab_minibot_robot.git)  (사진은 맨 아래)
 
 ---
 ## 2. 프로젝트 
