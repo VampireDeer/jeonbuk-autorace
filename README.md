@@ -31,7 +31,9 @@
 3 로봇 네비게이션 구동 
 - map 이름에 따라 맨 뒤 yaml 파일이 바뀔 수 있다
 
+
     ros2 launch minibot_navigation2 bringup_launch.py map:=`ros2 pkg prefix minibot_navigation2`/share/minibot_navigation2/maps/map_final.yaml
+
 
 ![image (3)](https://github.com/VampireDeer/jeonbuk-autorace/assets/132260442/6c8ee2fc-8542-4df5-8b76-57c4fcf786fa)
 
